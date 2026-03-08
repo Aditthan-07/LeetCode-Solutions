@@ -1,0 +1,24 @@
+#include <vector>
+using namespace std;
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+class Solution {
+    void preorder(TreeNode* root, vector<int>& res) {
+        if (!root) return;
+        res.push_back(root->val);
+        preorder(root->left, res);
+        preorder(root->right, res);
+    }
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> res;
+        preorder(root, res);
+        return res;
+    }
+};
